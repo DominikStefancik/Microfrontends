@@ -2,9 +2,9 @@
   "name": "marketing",
   "version": "1.0.0",
   "description": "An app handling marketing part of the frontend.",
-
   "scripts": {
-    "start": "webpack serve --config config/webpack.dev.js"
+    "start": "webpack serve --config config/webpack.dev.js",
+    "build": "webpack --config config/webpack.prod.js"
   },
   "keywords": [
     "microfrontend",
