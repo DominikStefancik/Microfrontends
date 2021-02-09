@@ -2,15 +2,17 @@ name: deploy-container
 
 on:
   push:
-    branches: [main]
-    paths: ["packages/container/**"]
+    branches:
+      - main
+    paths:
+      - "e-commerce-advanced/packages/container/**"
 
     # Allows you to run this workflow manually from the Actions tab
     workflow_dispatch:
 
 defaults:
   run:
-    working-directory: packages/container
+    working-directory: e-commerce-advanced/packages/container
 
 jobs:
   build:
