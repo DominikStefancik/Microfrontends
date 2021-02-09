@@ -6,6 +6,8 @@ on:
       - main
     paths:
       - "e-commerce-advanced/packages/container/**"
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
 
 defaults:
   run:
