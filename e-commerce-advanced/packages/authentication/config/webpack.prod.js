@@ -3,24 +3,18 @@ const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPl
 const commonConfig = require("./webpack.common");
 const packageJson = require("../package.json");
 
-const PORT = 8080;
-
-const devConfig = {
-  mode: "development",
-  devServer: {
-    port: PORT,
-    historyApiFallback: {
-      index: "/index.html",
-    },
-  },
+const prodConfig = {
+  mode: "production",
   output: {
-    publicPath: `http://localhost:${PORT}/`,
+    filename: "[name].[contenthash].js",
+    publicPath: "/auth/latest/",
   },
   plugins: [
     new ModuleFederationPlugin({
-      name: "conatiner",
-      remotes: {
-        marketing: "marketing@http://localhost:8081/remoteEntry.js",
+      name: "authentication",
+      filename: "remoteEntry.js",
+      exposes: {
+        "./AuthenticationApp": "./src/bootstrap",
       },
       // all dependencies which are mentioned in the 'package.json' file will be shared
       // i.e. webpack makes sure that these dependencies are loaded exactly one time in the browser
@@ -29,6 +23,4 @@ const devConfig = {
   ],
 };
 
-// because the 'devConfig' is the second argument,
-// the options from its object overwrite the options with the same name from the 'commonConfig' object
-module.exports = merge(commonConfig, devConfig);
+module.exports = merge(commonConfig, prodConfig);
