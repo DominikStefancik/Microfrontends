@@ -1,4 +1,4 @@
-import { mount } from "marketing/MarketingApp";
+import { mount } from "authentication/AuthenticationApp";
 import React, { useRef, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 
@@ -11,8 +11,8 @@ export default () => {
   useEffect(() => {
     const { onParentNavigate } = mount(reference.current, {
       initialPath: containerHistoryObject.location.pathname,
-      // 'location' is an argument which is passed by 'history.listen' function called inside the Marketing app
-      // it is an object which has information about where we are about to navigate to inside the Marketing app
+      // 'location' is an argument which is passed by 'history.listen' function called inside the Authentication app
+      // it is an object which has information about where we are about to navigate to inside the Authentication app
       // NOTE: here we destructure the 'location' object and rename its property 'pathname' to 'nextPathname'
       onNavigate: ({ pathname: nextPathname }) => {
         const { pathname } = containerHistoryObject.location;
@@ -26,7 +26,7 @@ export default () => {
 
     // "containerHistoryObject.listen" accepts an event listener which is fired when any navigation occurs inside the Container app
     containerHistoryObject.listen(onParentNavigate);
-  }, []); // only run the 'useEffect' function once, when the 'MarketingApp' component is rendered
+  }, []); // only run the 'useEffect' function once, when the 'AuthenticationApp' component is rendered
 
   return <div ref={reference} />;
 };

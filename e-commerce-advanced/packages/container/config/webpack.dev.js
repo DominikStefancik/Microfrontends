@@ -18,9 +18,10 @@ const devConfig = {
   },
   plugins: [
     new ModuleFederationPlugin({
-      name: "conatiner",
+      name: "container",
       remotes: {
         marketing: "marketing@http://localhost:8081/remoteEntry.js",
+        authentication: "authentication@http://localhost:8082/remoteEntry.js",
       },
       // all dependencies which are mentioned in the 'package.json' file will be shared
       // i.e. webpack makes sure that these dependencies are loaded exactly one time in the browser

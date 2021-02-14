@@ -16,6 +16,7 @@ const prodConfig = {
       name: "container",
       remotes: {
         marketing: `marketing@${productionDomain}/marketing/latest/remoteEntry.js`,
+        authentication: `authentication@${productionDomain}/auth/latest/remoteEntry.js`,
       },
       // all dependencies which are mentioned in the 'package.json' file will be shared
       // i.e. webpack makes sure that these dependencies are loaded exactly one time in the browser

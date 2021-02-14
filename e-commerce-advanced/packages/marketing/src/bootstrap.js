@@ -4,10 +4,14 @@ import { createMemoryHistory, createBrowserHistory } from "history";
 import App from "./App";
 
 // Mount function to start the app
-const mount = (element, { onNavigate, defaultHistoryObject }) => {
+const mount = (element, { onNavigate, defaultHistoryObject, initialPath }) => {
   // represents a memory history object which will be used for customised routing inside the Marketing app
   // the 'defaultHistoryObject' is only provided when the Marketing app runs in the development mode and isolation
-  const memoryHistoryObject = defaultHistoryObject || createMemoryHistory();
+  const memoryHistoryObject =
+    defaultHistoryObject ||
+    createMemoryHistory({
+      initialEntries: [initialPath],
+    });
 
   if (onNavigate) {
     // "memoryHistoryObject.listen" accepts an event listener which is fired when any navigation occurs inside the Marketing app
