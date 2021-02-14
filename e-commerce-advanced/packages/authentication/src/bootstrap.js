@@ -4,7 +4,10 @@ import { createMemoryHistory, createBrowserHistory } from "history";
 import App from "./App";
 
 // Mount function to start the app
-const mount = (element, { onNavigate, defaultHistoryObject, initialPath }) => {
+const mount = (
+  element,
+  { onSignIn, onNavigate, defaultHistoryObject, initialPath }
+) => {
   // represents a memory history object which will be used for customised routing inside the Authentication app
   // the 'defaultHistoryObject' is only provided when the Authentication app runs in the development mode and isolation
   const memoryHistoryObject =
@@ -18,7 +21,10 @@ const mount = (element, { onNavigate, defaultHistoryObject, initialPath }) => {
     memoryHistoryObject.listen(onNavigate);
   }
 
-  ReactDOM.render(<App history={memoryHistoryObject} />, element);
+  ReactDOM.render(
+    <App history={memoryHistoryObject} onSignIn={onSignIn} />,
+    element
+  );
 
   // we create an object and pass it to the Container app
   // this object contains functions which will be called from the Container app
